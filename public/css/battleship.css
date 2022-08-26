@@ -7,31 +7,38 @@ h1 {
 }
 
 #game {
-    display: flex;
-    align-items: flex-start;
+    /* display: flex;
+    align-items: flex-start; */
 }
 
+#player-data {
+    display: inline-block;
+}
 
 .grid-user {
     display: none;
-    width: 50%;
-    margin: auto;
+    /* width: 50%;
+    margin: auto; */
 }
 
 #move {
     display: none;
-    max-width: 50%; 
-    margin: auto;
+    /* max-width: 50%; 
+    margin: auto; */
 }
 
-.hidden-info {
-    display: none;
+.hidden-info,
+.setup-buttons {
+    display: inline-block;
 }
 
 table {
-    margin: auto;
+    /* margin: auto; */
     background-color: skyblue;
     color: black;
+    max-width: 50%;
+    margin: 0;
+    margin-right: 0;
 }
 
 td {
@@ -42,10 +49,10 @@ td {
 
 
 .grid-display {
-    width: 400px;
+    /* width: 400px;
     height: 400px;  
     margin: 20px;
-    background-color: black;
+    background-color: black; */
     display: none;
 }
 

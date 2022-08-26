@@ -57,10 +57,10 @@ function startSetting(gameData) {
     $('game-menu').style.display = 'none';
     //Muestra el juego
     const gameElement = document.querySelector('.grid-user');
-    gameElement.style.display = 'inline-block';
-    gameElement.style.margin = 'auto';
-    document.querySelector('.hidden-info').style.display = 'flex';
-    document.querySelector('.grid-display').style.display = 'inline-block';
+    gameElement.style.display = 'inline';
+    // gameElement.style.margin = 'auto';
+    document.querySelector('.hidden-info').style.display = 'inline';
+    document.querySelector('.grid-display').style.display = 'inline';
     //Muestro qué player es, inicializo variables en sessionStorage
     const player = $('player-data');
     const turn = document.createElement('div');

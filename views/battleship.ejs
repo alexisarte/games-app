@@ -7,46 +7,49 @@
     <div id="game-menu">
         <%-include('templates/gameMenu')%>
     </div>
-    <div id ="game">
-        <div class="battleship-grid grid-user">
-            <table>
-                <% for(let i=0; i < 10; i++){ %>
-                    <tr>
-                        <% for(let j=0; j < 10; j++){%>
-                            <td id="<%= i %><%= j %>"></td>
+    <div class="grid text-center" id ="game">
+        <div class="g-col-6">
+            <div class="battleship-grid grid-user">
+                <table>
+                    <% for(let i=0; i < 10; i++){ %>
+                        <tr>
+                            <% for(let j=0; j < 10; j++){%>
+                                <td id="<%= i %><%= j %>"></td>
+                                <% }%>
+                        </tr>
                         <% }%>
-                    </tr>
-                    <% }%>
-            </table>
+                </table>
+            </div>
+            <div class="container hidden-info">
+                <!-- <div class="setup-buttons"> -->
+                    <button id="ready" class="position-relative btn btn-dark" onclick="setBoard()">Ready</button>
+                    <button id="rotate" class="position-relative btn btn-dark">Rotate Your Ships</button>
+                <!-- </div> -->
+            </div>
+            <div id="player-data"></div>
         </div>
-        <!-- <div class="container"> -->
+        <div class="container g-col-6">
             <div class="grid-display">
                 <div class="ship destroyer-container" draggable="true"><div id="destroyer0-0"></div><div id="destroyer0-1"></div></div>
                 <div class="ship submarine-container" draggable="true"><div id="submarine1-0"></div><div id="submarine1-1"></div><div id="submarine1-2"></div></div>
                 <div class="ship cruiser-container" draggable="true"><div id="cruiser2-0"></div><div id="cruiser2-1"></div><div id="cruiser2-2"></div></div>
                 <div class="ship battleship-container" draggable="true"><div id="battleship3-0"></div><div id="battleship3-1"></div><div id="battleship3-2"></div><div id="battleship3-3"></div></div>
                 <div class="ship carrier-container" draggable="true"><div id="carrier4-0"></div><div id="carrier4-1"></div><div id="carrier4-2"></div><div id="carrier4-3"></div><div id="carrier4-4"></div></div>
-            <!-- </div> -->
-        </div>
-        <div id="move">
-            <table>
-                <% for(let i = 0;  i < 10; i++){ %>
-                    <tr>
-                    <% for(let j = 0; j < 10; j++){%>
-                        <td id="<%= i %><%= j %>2" onclick="fetchTurn(id)"></td>
-                    <% }%>
-                    </tr>
-                <% }%>
-            </table>
-        </div>
-    </div>
-    <div class="container hidden-info">
-        <div class="setup-buttons" id="setup-buttons">
-            <button id="ready" class="position-relative" onclick="setBoard()">Ready</button>
-            <button id="rotate" class="position-relative">Rotate Your Ships</button>
+            </div>
+            <div id="move">
+                <table>
+                    <% for(let i=0; i < 10; i++){ %>
+                        <tr>
+                            <% for(let j=0; j < 10; j++){%>
+                                <td id="<%= i %><%= j %>2" onclick="fetchTurn(id)"></td>
+                                <% }%>
+                        </tr>
+                        <% }%>
+                </table>
+            </div>
         </div>
     </div>
-    <div id="player-data">
-    </div>
+        
+    
 </body>
 </html>
