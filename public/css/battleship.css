@@ -1,0 +1,178 @@
+h1 {
+    text-align: center;
+}
+
+#game-menu {
+    text-align: center;
+}
+
+#game {
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.grid-user {
+    display: none;
+    width: 50%;
+    margin: auto;
+}
+
+#move {
+    display: none;
+    max-width: 50%; 
+    margin: auto;
+}
+
+.hidden-info {
+    display: none;
+}
+
+table {
+    margin: auto;
+    background-color: skyblue;
+    color: black;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    border: 0.5px solid black;
+}
+
+
+.grid-display {
+    width: 400px;
+    height: 400px;  
+    margin: 20px;
+    background-color: black;
+    display: none;
+}
+
+.destroyer-container {
+    width: 80px;
+    height: 40px;
+    margin: 10px;
+    display: flex;
+}
+
+.destroyer-container-vertical {
+    width: 40px;
+    height: 80px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.submarine-container {
+    width: 120px;
+    height: 40px;
+    margin: 10px;
+    display: flex;
+}
+
+.submarine-container-vertical {
+    width: 40px;
+    height: 120px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cruiser-container {
+    width: 120px;
+    height: 40px;
+    margin: 10px;
+    display: flex;
+}
+
+.cruiser-container-vertical {
+    width: 40px;
+    height: 120px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.battleship-container {
+    width: 160px;
+    height: 40px;
+    margin: 10px;
+    display: flex;
+}
+
+.battleship-container-vertical {
+    width: 40px;
+    height: 160px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carrier-container {
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    display: flex;
+}
+
+.carrier-container-vertical {
+    width: 40px;
+    height: 200px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ship {
+    background-color: gray;
+}
+
+.ship div {
+    width: 40px;
+    max-width: 40px;;
+    height: 40px;
+    border: 0.5px solid black;
+}
+
+.taken {
+    background-color: gray;
+    border: none;
+}
+
+#miss {
+    background-color: white;
+    width: 2vmin;
+    height: 2vmin;  
+    border-radius: 100%;
+    margin: auto;
+}
+  
+#boom {
+    background-color: red;
+    width: 2vmin;
+    height: 2vmin;  
+    border-radius: 100%;
+    margin: auto;
+}
+
+#dead {
+    background-color: black;
+    width: 2vmin;
+    height: 2vmin;
+    border-radius: 100%;
+    margin: auto;
+}
+
+#end{
+    background-color: rgba(52, 177, 208, 0.659);
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    padding: 1%;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, 0);
+}

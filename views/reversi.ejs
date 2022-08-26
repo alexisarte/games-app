@@ -1,0 +1,24 @@
+<%-include('templates/head')%>
+<link rel="stylesheet" href="./css/reversi.css">
+<script src="./js/reversi.js"></script>
+</head>
+<body>
+    <%-include('templates/header')%>
+    <div id="game-menu">
+        <%-include('templates/gameMenu')%>
+    </div>
+    <div id="game">
+        <table>
+            <% for(let i = 0;  i < 8; i++){ %>
+                <tr>
+                <% for(let j = 0; j < 8; j++){%>
+                    <td id="<%= i %><%= j %>" onclick="fetchTurn(id)"></td>
+                <% }%>
+                </tr>
+            <% }%>
+        </table>
+    </div>
+    <div id="player-data">
+    </div>
+</body>
+</html>
