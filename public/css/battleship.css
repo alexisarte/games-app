@@ -9,6 +9,17 @@ h1 {
 #game {
     /* display: flex;
     align-items: flex-start; */
+    max-width: 50%;
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: repeat(2, 50vw);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
 }
 
 #player-data {
@@ -16,15 +27,15 @@ h1 {
 }
 
 .grid-user {
-    display: none;
+    display: inline-block;
     /* width: 50%;
     margin: auto; */
 }
 
 #move {
-    display: none;
-    /* max-width: 50%; 
-    margin: auto; */
+    /* display: none; */
+    max-width: 50%; 
+    margin: auto;
 }
 
 .hidden-info,
@@ -33,12 +44,9 @@ h1 {
 }
 
 table {
-    /* margin: auto; */
+    margin: auto;
     background-color: skyblue;
     color: black;
-    max-width: 50%;
-    margin: 0;
-    margin-right: 0;
 }
 
 td {

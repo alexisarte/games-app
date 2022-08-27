@@ -57,10 +57,10 @@ function startSetting(gameData) {
     $('game-menu').style.display = 'none';
     //Muestra el juego
     const gameElement = document.querySelector('.grid-user');
-    gameElement.style.display = 'inline';
+    gameElement.style.display = 'inline-block';
     // gameElement.style.margin = 'auto';
-    document.querySelector('.hidden-info').style.display = 'inline';
-    document.querySelector('.grid-display').style.display = 'inline';
+    document.querySelector('.hidden-info').style.display = 'inline-block';
+    document.querySelector('.grid-display').style.display = 'inline-block';
     //Muestro qué player es, inicializo variables en sessionStorage
     const player = $('player-data');
     const turn = document.createElement('div');
@@ -257,7 +257,7 @@ function setBoard() {
 -----------------------------COMENZAR JUEGO------------------------
 */
 function startGame(gameData) {
-    $('move').style.display = 'inline-block';
+    $('move').style.display = 'block';
 }
 
 function showPoster(game) {
@@ -286,7 +286,7 @@ window.onload = function () {
     // Girar los barcos
     function rotate() {
         isHorizontal = isHorizontal ? false : true;
-        displayGrid.style.display = isHorizontal ? 'block' : 'flex';
+        displayGrid.style.display = isHorizontal ? 'inline-block' : 'flex';
         destroyer.classList.toggle('destroyer-container-vertical'); // toggle elimina una clase si existe, sino la agrega
         submarine.classList.toggle('submarine-container-vertical');
         cruiser.classList.toggle('cruiser-container-vertical');
