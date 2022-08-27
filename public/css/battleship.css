@@ -7,40 +7,30 @@ h1 {
 }
 
 #game {
-    /* display: flex;
-    align-items: flex-start; */
-    max-width: 50%;
-    /* margin: auto; */
     display: grid;
     grid-template-columns: repeat(2, 50vw);
 }
 
 .container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     margin: auto;
-    text-align: center;
-}
-
-#player-data {
-    display: inline-block;
+    text-align: center; */
 }
 
 .grid-user {
-    display: inline-block;
+    display: none;
     /* width: 50%;
     margin: auto; */
 }
 
 #move {
-    /* display: none; */
-    max-width: 50%; 
-    margin: auto;
+    display: none;
 }
 
 .hidden-info,
 .setup-buttons {
-    display: inline-block;
+    display: none;
 }
 
 table {
@@ -57,10 +47,10 @@ td {
 
 
 .grid-display {
-    /* width: 400px;
+    width: 400px;
     height: 400px;  
     margin: 20px;
-    background-color: black; */
+    background-color: black;
     display: none;
 }
 

@@ -243,6 +243,7 @@ function setBoard() {
             document.querySelector('.grid-display').style.display = 'none';
             if (gameData.status == 'waiting') {
                 $('turn').innerHTML = 'ESPERANDO QUE EL OPONENTE COLOQUE SUS BARCOS';
+                startGame(gameData);
                 pollGame(gameData);
             } else {
                 startGame(gameData);
@@ -257,7 +258,8 @@ function setBoard() {
 -----------------------------COMENZAR JUEGO------------------------
 */
 function startGame(gameData) {
-    $('move').style.display = 'block';
+    $('move').style.display = 'flex';
+    // $('move').style.width = '400px';
 }
 
 function showPoster(game) {
