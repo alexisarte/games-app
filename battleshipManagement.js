@@ -208,6 +208,7 @@ function move(boardId, playerId, square) {
 function isValidMove(board, x, y) {
     return isOnBoard(x, y) && isValid(board[x][y]);
 }
+
 function isValid(name) {
     if (name != null)
         if (name[0] == 'X' || name[0] == 'F' || name == AGUA)
@@ -258,24 +259,8 @@ Retorna el estado de la partida si es existente, sino retorna false
 function getGame(boardId, playerId) {
     //Busca el juego por boardId
     const game = games.find(e => e.keys.boardId == boardId);
-    if (game.keys.player1Id == playerId) return clientData(game, PLAY1);
-    else if (game.keys.player2Id == playerId) return clientData(game, PLAY2);
-}
-
-function isWinner(board, player) {
-    let cantidad = 0;
-    //Recorre el tablero
-    for (let i = 0; i < LENGTH; i++) {
-        for (let j = 0; j < LENGTH; j++) {
-            if (board[i][j] == player) {
-                cantidad++;
-            }
-        }
-    }
-    if (cantidad > (LENGTH * LENGTH) / 2) {
-        return true;
-    }
-    return false;
+    return game.keys.player1Id == playerId ? clientData(game, PLAY1) 
+            : (game.keys.player2Id == playerId) ? clientData(game, PLAY2) : null;
 }
 
 module.exports = {
@@ -283,5 +268,5 @@ module.exports = {
     joinGame,
     getGame,
     move,
-    setBoard,
+    setBoard
 };

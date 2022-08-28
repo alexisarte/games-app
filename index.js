@@ -5,7 +5,7 @@ const app = express();
 
 //SETTINGS
 //Nombre y Puerto de la app
-app.set("appName", "App Juegos"); 
+app.set("appName", "Games app"); 
 app.set("port", "3000");
 //Setea el motor de views
 app.set("view engine", "ejs");

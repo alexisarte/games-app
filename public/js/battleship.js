@@ -63,10 +63,11 @@ function startSetting(gameData) {
     document.querySelector('.grid-display').style.display = 'inline-block';
     //Muestro qué player es, inicializo variables en sessionStorage
     const player = $('player-data');
-    const turn = document.createElement('div');
+    const turn = document.createElement('p');
+    const tableId = document.createElement('p');
     sessionStorage.clear();
     sessionStorage.setItem('boardId', gameData.keys.boardId);
-    turn.innerHTML = 'COLOCÁ TUS BARCOS';
+    turn.innerHTML = 'Coloca tus barcos';
     //Si el estado es created, es el player1, sino es el player2
     if (gameData.status == 'created') {
         sessionStorage.setItem('playerId', gameData.keys.player1Id);
@@ -75,9 +76,9 @@ function startSetting(gameData) {
         sessionStorage.setItem('playerId', gameData.keys.player2Id);
         player.innerHTML = 'Jugador 2';
     }
-    player.innerHTML += ` Id del tablero: ${gameData.keys.boardId}`;
+    tableId.innerHTML += ` Id del tablero: ${gameData.keys.boardId}`;
     turn.id = 'turn';
-    $('player-data').appendChild(turn);
+    $('player-data').append(tableId, turn);
 }
 
 /*  

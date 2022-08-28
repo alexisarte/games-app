@@ -2,6 +2,11 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+    margin: 0;
+}
+
 #game-menu {
     text-align: center;
 }
@@ -12,10 +17,7 @@ h1 {
 }
 
 .container {
-    /* display: flex;
-    flex-direction: column;
-    margin: auto;
-    text-align: center; */
+    text-align: center;
 }
 
 .grid-user {

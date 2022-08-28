@@ -1,10 +1,11 @@
 {
-  "name": "app-juegos",
+  "name": "games-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "npx nodemon index.js"
   },
   "keywords": [],
   "author": "",
