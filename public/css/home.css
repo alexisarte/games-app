@@ -15,8 +15,9 @@ h1 {
   z-index: 99;
   font-size: 5em;
   text-align: center;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: 'Silkscreen', cursive;
   font-weight: 900;
+  line-height: 1;
   color: #fff;
   margin: auto;
   margin-top: 15%;
