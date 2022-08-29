@@ -1,5 +1,6 @@
 h1 {
     text-align: center;
+    margin: 5%;
 }
 
 p {
@@ -7,8 +8,25 @@ p {
     margin: 0;
 }
 
+#menu {
+    background-color: #f2f2f2;
+    padding: 5%;
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+    margin-top: 15%;
+}
+
 #game-menu {
     text-align: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 10;
 }
 
 #game {
@@ -21,7 +39,7 @@ p {
 }
 
 .grid-user {
-    display: none;
+    /* display: none; */
     /* width: 50%;
     margin: auto; */
 }
@@ -32,7 +50,7 @@ p {
 
 .hidden-info,
 .setup-buttons {
-    display: none;
+    /* display: none; */
 }
 
 table {
@@ -53,7 +71,7 @@ td {
     height: 400px;  
     margin: 20px;
     background-color: black;
-    display: none;
+    /* display: none; */
 }
 
 .destroyer-container {
