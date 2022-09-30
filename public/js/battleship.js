@@ -50,7 +50,7 @@ function joinGame() {
 /*  
 ----------------------------EMPEZAR PARTIDA--------------------------
 Se ejecuta cuando un cliente crea o se suma a una partida,
-elimina el menu y muestra el juego, inicializa variables de sessionStorage.
+elimina el menu y muestra el juego, inicializa variables de localStorage.
 */
 function startSetting(gameData) {
     //Oculta el menu
@@ -61,19 +61,25 @@ function startSetting(gameData) {
     // gameElement.style.margin = 'auto';
     document.querySelector('.hidden-info').style.display = 'inline-block';
     document.querySelector('.grid-display').style.display = 'inline-block';
-    //Muestro qué player es, inicializo variables en sessionStorage
+    //Muestro qué player es, inicializo variables en localStorage
     const player = $('player-data');
     const turn = document.createElement('p');
-    const tableId = document.createElement('p');
-    sessionStorage.clear();
-    sessionStorage.setItem('boardId', gameData.keys.boardId);
+    const tableId = document.createElement('div');
+    let copyIcon = document.createElement('i');
+    copyIcon.className = 'fa-solid';
+    copyIcon.classList.add('fa-copy');
+    copyIcon.addEventListener('click', copy);
+    tableId.appendChild(copyIcon);
+    tableId.id = 'tableId';
+    localStorage.clear();
+    localStorage.setItem('boardId', gameData.keys.boardId);
     turn.innerHTML = 'Coloca tus barcos';
     //Si el estado es created, es el player1, sino es el player2
     if (gameData.status == 'created') {
-        sessionStorage.setItem('playerId', gameData.keys.player1Id);
+        localStorage.setItem('playerId', gameData.keys.player1Id);
         player.innerHTML = 'Jugador 1';
     } else {
-        sessionStorage.setItem('playerId', gameData.keys.player2Id);
+        localStorage.setItem('playerId', gameData.keys.player2Id);
         player.innerHTML = 'Jugador 2';
     }
     tableId.innerHTML += ` Id del tablero: ${gameData.keys.boardId}`;
@@ -90,7 +96,7 @@ Llama a updateBoard() y a pollGame() en caso de haber podido realizar el movimie
 function fetchTurn(square) {
     //Envía la playerId que movió
     const data = {
-        playerId: sessionStorage.getItem('playerId'),
+        playerId: localStorage.getItem('playerId'),
         square: square,
     };
     const options = {
@@ -100,7 +106,7 @@ function fetchTurn(square) {
         },
         body: JSON.stringify(data),
     };
-    fetch(`/battleship/move/${sessionStorage.getItem('boardId')}`, options)
+    fetch(`/battleship/move/${localStorage.getItem('boardId')}`, options)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -148,7 +154,7 @@ LLama a updateBoard() si se realizaron cambios en la partida
 */
 function pollGame(currentGame) {
     let idInterval = setInterval(function () {
-        fetch(`/battleship/get/${sessionStorage.getItem('boardId')}/${sessionStorage.getItem('playerId')}`)
+        fetch(`/battleship/get/${localStorage.getItem('boardId')}/${localStorage.getItem('playerId')}`)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -220,7 +226,7 @@ function setBoard() {
         }
     }
     const data = {
-        playerId: sessionStorage.getItem('playerId'),
+        playerId: localStorage.getItem('playerId'),
         board: board,
     };
 
@@ -231,7 +237,7 @@ function setBoard() {
         },
         body: JSON.stringify(data),
     };
-    fetch(`/battleship/setBoard/${sessionStorage.getItem('boardId')}`, options)
+    fetch(`/battleship/setBoard/${localStorage.getItem('boardId')}`, options)
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -266,10 +272,19 @@ function startGame(gameData) {
 function showPoster(game) {
     const end = document.createElement('div');
     end.id = 'end';
-    end.innerHTML = game.winner == sessionStorage.getItem('playerId') ? 'GANASTE' : game.winner != 'TIE' ? 'PERDISTE' : 'EMPATE';
+    end.innerHTML = game.winner == localStorage.getItem('playerId') ? 'GANASTE' : game.winner != 'TIE' ? 'PERDISTE' : 'EMPATE';
     $('game').appendChild(end);
     $('turn').remove();
 }
+
+function copy() {
+    let copyText = this.innerHTML;
+    navigator.clipboard.writeText(copyText);
+}
+
+window.addEventListener("beforeunload", function (event) {
+    event.preventDefault();
+});
 
 window.onload = function () {
     const displayGrid = document.querySelector('.grid-display');
@@ -417,4 +432,8 @@ window.onload = function () {
         } else return;
         displayGrid.removeChild(draggedShip);
     }
+    
+    if (localStorage.getItem('boardId') !== null) {
+        console.log('entro');
+    }    
 };

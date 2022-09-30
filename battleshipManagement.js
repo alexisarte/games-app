@@ -263,6 +263,12 @@ function getGame(boardId, playerId) {
             : (game.keys.player2Id == playerId) ? clientData(game, PLAY2) : null;
 }
 
+function recuperateGame(boardId, playerId) {
+    const game = games.find(e => e.keys.boardId == boardId);
+    return game.keys.player1Id == playerId ? clientData(game, PLAY1) 
+            : (game.keys.player2Id == playerId) ? clientData(game, PLAY2) : null;
+}
+
 module.exports = {
     newGame,
     joinGame,

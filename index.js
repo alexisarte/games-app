@@ -37,6 +37,7 @@ app.post("/battleship/new", newBattleship);
 app.patch("/battleship/join", joinBattleship);
 app.patch("/battleship/setBoard/:boardId", setBoardBattleship);
 app.patch("/battleship/move/:boardId", moveBattleship);
+app.patch("/battleship/move/:boardId", recuperateBattleship);
 app.get("/battleship/get/:boardId/:playerId", getBattleship);
 
 
@@ -107,6 +108,12 @@ function moveBattleship(req, res) {
 //Petición: Obetener estado de partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function getBattleship(req, res) {
     const game = battleshipManagement.getGame(req.params.boardId, req.params.playerId);
+    game ? res.send(game) : res.status(400).send();
+}
+
+//Petición: Recuperar partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
+function recuperateBattleship(req, res) {
+    const game = battleshipManagement.recuperateGame(req.params.boardId, req.params.playerId);
     game ? res.send(game) : res.status(400).send();
 }
 
