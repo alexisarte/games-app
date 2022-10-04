@@ -1,4 +1,0 @@
-{
-  "appService.defaultWebAppToDeploy": "/subscriptions/208c53f3-9d25-4ac6-a457-61e431ef9024/AppServices/subscriptions/208c53f3-9d25-4ac6-a457-61e431ef9024/resourceGroups/games-app_group/providers/Microsoft.Web/sites/games-app",
-  "appService.deploySubpath": "."
-}
