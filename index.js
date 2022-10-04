@@ -37,7 +37,6 @@ app.post("/battleship/new", newBattleship);
 app.patch("/battleship/join", joinBattleship);
 app.patch("/battleship/setBoard/:boardId", setBoardBattleship);
 app.patch("/battleship/move/:boardId", moveBattleship);
-app.patch("/battleship/move/:boardId", recuperateBattleship);
 app.get("/battleship/get/:boardId/:playerId", getBattleship);
 
 
