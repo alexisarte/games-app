@@ -74,7 +74,7 @@ function joinGame() {
 /*  
 ----------------------------EMPEZAR PARTIDA--------------------------
 startGame() se ejecuta cuando un cliente crea o se suma a una partida,
-elimina el menu y muestra el juego, inicializa variables de sessionStorage.
+elimina el menu y muestra el juego, inicializa variables de localStorage.
 */
 function startGame(gameData) {
     console.log(gameData);
@@ -84,19 +84,19 @@ function startGame(gameData) {
     //Muestra el juego
     const gameElement = $("game");
     gameElement.style.display = "flex";
-    //Muestro qué player es, inicializo variables en sessionStorage
+    //Muestro qué player es, inicializo variables en localStorage
     const player = $("player-data");
     const turn = document.createElement("div");
-    sessionStorage.clear();
-    sessionStorage.setItem("boardId", gameData.keys.boardId);
+    localStorage.clear();
+    localStorage.setItem("boardId", gameData.keys.boardId);
     /* Si el turn es null es una partida recién creada y es el P1. 
        Sino es el P2 uniéndose a una partida */
     if (gameData.turn == null) {
-        sessionStorage.setItem("playerId", gameData.keys.player1Id);
+        localStorage.setItem("playerId", gameData.keys.player1Id);
         player.innerHTML = `Jugador 1`;
         turn.innerHTML = "ESPERANDO AL OPONENTE"
     } else {
-        sessionStorage.setItem("playerId", gameData.keys.player2Id);
+        localStorage.setItem("playerId", gameData.keys.player2Id);
         player.innerHTML = `Jugador 2`;
         turn.innerHTML = "TURNO DEL OPONENTE"
     }
@@ -117,7 +117,7 @@ function fetchTurn(square) {
 
     //Envía la playerId que movió
     const data = {
-        playerId: sessionStorage.getItem("playerId"),
+        playerId: localStorage.getItem("playerId"),
         square: square,
     };
 
@@ -128,7 +128,7 @@ function fetchTurn(square) {
         },
         body: JSON.stringify(data),
     };
-    fetch(`/reversi/move/${sessionStorage.getItem("boardId")}`, options)
+    fetch(`/reversi/move/${localStorage.getItem("boardId")}`, options)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -162,7 +162,7 @@ LLama a updateBoard() si se realizaron cambios en la partida
 */
 function pollGame(currentGame) {
     let idInterval = setInterval(function () {
-        fetch(`/reversi/get/${sessionStorage.getItem("boardId")}`)
+        fetch(`/reversi/get/${localStorage.getItem("boardId")}`)
             .then((response) => {
                 if (response.ok) {
                     return response.json();
@@ -223,7 +223,7 @@ function updateBoard(gameData) {
 function showPoster(game) {
     const end = document.createElement("div");
     end.id = "end";
-    end.innerHTML = (game.status == sessionStorage.getItem("playerId")) ? "GANASTE" : (game.status != "tie") ? "PERDISTE" : "EMPATE";
+    end.innerHTML = (game.status == localStorage.getItem("playerId")) ? "GANASTE" : (game.status != "tie") ? "PERDISTE" : "EMPATE";
     $("game").appendChild(end);
     $("turn").remove();
 }
