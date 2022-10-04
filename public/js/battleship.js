@@ -431,9 +431,5 @@ window.onload = function () {
             }
         } else return;
         displayGrid.removeChild(draggedShip);
-    }
-    
-    if (localStorage.getItem('boardId') !== null) {
-        console.log('entro');
-    }    
+    }   
 };

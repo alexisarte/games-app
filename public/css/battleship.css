@@ -23,7 +23,7 @@ p {
     width: 100vw;
     height: 100vh;
     top: 0;
-    left: 0;
+    /* left: 0  ;  */
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(3px);
     z-index: 10;
@@ -36,12 +36,6 @@ p {
 
 .container {
     text-align: center;
-}
-
-.grid-user {
-    /* display: none; */
-    /* width: 50%;
-    margin: auto; */
 }
 
 #move {
