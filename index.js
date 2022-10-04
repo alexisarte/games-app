@@ -6,7 +6,7 @@ const app = express();
 //SETTINGS
 //Nombre y Puerto de la app
 app.set("appName", "Games app"); 
-app.set("port", "3000");
+app.set("port", process.env.PORT || 3000);
 //Setea el motor de views
 app.set("view engine", "ejs");
 // Setea la carpeta publica que usará la app ;
@@ -108,12 +108,6 @@ function moveBattleship(req, res) {
 //Petición: Obetener estado de partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function getBattleship(req, res) {
     const game = battleshipManagement.getGame(req.params.boardId, req.params.playerId);
-    game ? res.send(game) : res.status(400).send();
-}
-
-//Petición: Recuperar partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
-function recuperateBattleship(req, res) {
-    const game = battleshipManagement.recuperateGame(req.params.boardId, req.params.playerId);
     game ? res.send(game) : res.status(400).send();
 }
 
