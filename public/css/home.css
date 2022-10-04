@@ -28,24 +28,19 @@ h1 {
 }
 
 .battleship-image {
-  width: 25%;
-} 
-
-.battleship-image img {
-  width: 100%;
+  width: 40%;
 } 
 
 .reversi-image {
-  width: 25%;
+  width: 30%;
 }
 
-.reversi-image img {
-  width: 50%;
+.lobby div img {
+  width: 100%;
 } 
 
 .lobby {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
+  justify-content: space-around;
+  margin: 5%;
 }

@@ -5,12 +5,10 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* height: 25vh; */
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    text-align: center;
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    margin: 2%;
 }
 
 #menu {

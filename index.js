@@ -107,7 +107,7 @@ function moveBattleship(req, res) {
 //Petición: Obetener estado de partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function getBattleship(req, res) {
     const game = battleshipManagement.getGame(req.params.boardId, req.params.playerId);
-    game ? res.send(game) : res.status(400).send();
+    game ? res.status(200).send(game) : res.status(400).send();
 }
 
 //LISTEN
