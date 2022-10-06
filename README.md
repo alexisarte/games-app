@@ -13,5 +13,5 @@ Proyecto final del seminario de lenguajes de la Facultad de Informática - UNLP 
 [Games aplication](https://games-app-x6ud8.ondigitalocean.app/ "Games-app")
 
 ## Contributors
-@inagoy
+@inagoy 
 @JuanMoli111
