@@ -1,13 +1,12 @@
 # Games app
-Proyecto final del seminario de lenguajes de la Facultad de Informática - UNLP realizado  en equipo
+Aplicación de juegos desarrollada en equipo como proyecto final del seminario de lenguajes (javascript) - facultad de informática UNLP
 
-### Table of Contents
-1. [Deploy](#deploy)
-2. [Contributors](#contributors)
+![](https://i.imgur.com/GxVpqks.png)
 
-## Deploy 🚀<a name="deploy"></a>
+
+## Deploy 🚀
 [Games aplication](https://games-app-x6ud8.ondigitalocean.app/ "Games-app")
 
-## Contributors <a name="contributors"></a>
+## Contributors
 [@inagoy](https://github.com/inagoy)
 [@JuanMoli111](https://github.com/JuanMoli111)
