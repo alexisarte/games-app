@@ -116,7 +116,7 @@ function fetchTurn(square) {
         })
         .then(gameData => {
             //Si pudo mover, se actualiza el tablero del contrincante y se reinicia el loop de pollGame()
-            if (gameData.winner == null) {
+            if (gameData.winner === null) {
                 $('turn').innerHTML = 'TURNO DEL OPONENTE';
                 updateShotsBoard(gameData.shots);
                 pollGame(gameData);
@@ -168,9 +168,9 @@ function pollGame(currentGame) {
                     clearInterval(idInterval);
                     startGame(latestGame);
                     $('turn').innerHTML = 'TU TURNO';
-                } else if (currentGame.turn == latestGame.turn && latestGame.winner == null) {
+                } else if (currentGame.turn == latestGame.turn && latestGame.winner === null) {
                     console.log(latestGame);
-                } else if (latestGame.winner == null) {
+                } else if (latestGame.winner === null) {
                     // si no terminó el juego y es mi turno, se actualiza el tablero y se detiene el poll
                     $('turn').innerHTML = 'TU TURNO';
                     updateMyBoard(latestGame);

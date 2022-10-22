@@ -91,7 +91,7 @@ function startGame(gameData) {
     localStorage.setItem("boardId", gameData.keys.boardId);
     /* Si el turn es null es una partida recién creada y es el P1. 
        Sino es el P2 uniéndose a una partida */
-    if (gameData.turn == null) {
+    if (gameData.turn === null) {
         localStorage.setItem("playerId", gameData.keys.player1Id);
         player.innerHTML = `Jugador 1`;
         turn.innerHTML = "ESPERANDO AL OPONENTE"
@@ -205,7 +205,7 @@ function updateBoard(gameData) {
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
             let id = `${i}${j}`;
-            if (gameData.board[i][j] != null) {
+            if (gameData.board[i][j] !== null) {
                 let token = document.createElement("div");
                 token.classList.add("token");
                 if (gameData.board[i][j] == "P1") {
