@@ -90,7 +90,7 @@ Llama a las función generateId()
 */
 function joinGame(boardId) {
     //Busca una partida no llena para unirse con la boardId
-    const index = games.findIndex(e => e.keys.boardId == boardId && e.keys.player2Id == null);
+    const index = games.findIndex(e => e.keys.boardId == boardId && e.keys.player2Id === null);
     //Si existe tal partida
     if (index != -1) {
         const game = games[index];
@@ -138,7 +138,7 @@ function setBoard(boardId, playerId, board) {
     if (game && isBoardOk(board)) {
         let player = null;
         //Si es el playerId es valido y su tablero no se inicializó aún
-        if ((playerId == game.keys.player1Id && game.board1 == null) || (playerId == game.keys.player2Id && game.board2 == null)) {
+        if ((playerId == game.keys.player1Id && game.board1 === null) || (playerId == game.keys.player2Id && game.board2 === null)) {
             //Si es el P1
             if (playerId == game.keys.player1Id) {
                 player = PLAY1;
@@ -173,7 +173,7 @@ function move(boardId, playerId, square) {
 
     const game = games.find(e => e.keys.boardId == boardId);
     //Validar el turno, si es valido player indica qué jugador movió
-    if (game && ((playerId == game.keys.player1Id && game.turn == PLAY1) || (playerId == game.keys.player2Id && game.turn == PLAY2)) && game.winner == null) {
+    if (game && ((playerId == game.keys.player1Id && game.turn == PLAY1) || (playerId == game.keys.player2Id && game.turn == PLAY2)) && game.winner === null) {
         const player = game.turn;
         let shots = [];
         let valid = false;
@@ -193,7 +193,7 @@ function move(boardId, playerId, square) {
             }
         }
         if (valid) {
-            if (game.winner == null) game.turn = getOther(player);
+            if (game.winner === null) game.turn = getOther(player);
             updateGame(game);
 
             let clientD = clientData(game, player);
@@ -210,7 +210,7 @@ function isValidMove(board, x, y) {
 }
 
 function isValid(name) {
-    if (name != null)
+    if (name !== null)
         if (name[0] == 'X' || name[0] == 'F' || name == AGUA)
             return false;
     return true;
@@ -242,7 +242,7 @@ function updateBoard(board, boats, x, y) {
         if (boats[boatNumber] == 0) {
             for (let i = 0; i < LENGTH; i++)
                 for (let j = 0; j < LENGTH; j++)
-                    if (board[i][j] != null && board[i][j][1] == boatNumber) {
+                    if (board[i][j] !== null && board[i][j][1] == boatNumber) {
                         board[i][j] = 'F' + boatNumber;
                         shots.push({ value: 'F', x: i, y: j });
                     }
