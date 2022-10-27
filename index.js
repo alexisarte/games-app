@@ -3,6 +3,9 @@ const reversiManagement = require("./reversiManagement");
 const battleshipManagement = require("./battleshipManagement");
 const app = express();
 
+// No revelar tecnologías utilizadas
+app.disable('x-powered-by');
+
 //SETTINGS
 //Nombre y Puerto de la app
 app.set("appName", "Games app"); 
