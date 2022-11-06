@@ -1,6 +1,6 @@
 const express = require("express");
 const reversiManagement = require("./reversiManagement");
-const battleshipManagement = require("./battleshipManagement");
+const battleshipBack = require("./battleshipBack");
 const app = express();
 
 // No revelar tecnologías utilizadas
@@ -76,7 +76,7 @@ function getReversi(req, res) {
 
 function setBoardBattleship(req,res){
     //Comprueba si el jugador puede enviar el tablero, si es true devuelve el game
-    const game = battleshipManagement.setBoard(
+    const game = battleshipBack.setBoard(
         req.params.boardId,
         req.body.playerId,
         req.body.board
@@ -86,20 +86,20 @@ function setBoardBattleship(req,res){
 
 //Petición: Crear Juego (P1). Respuesta(si ok): Datos de la partida (game)
 function newBattleship(req, res) {
-    const game = battleshipManagement.newGame();
+    const game = battleshipBack.newGame();
     game? res.status(200).send(game):res.status(400).send();
 }
 
 //Petición: Unirse a Juego (P2). Respuesta(si ok): Datos de la partida (game)
 function joinBattleship(req, res) {
-    const game = battleshipManagement.joinGame(req.body.boardId);
+    const game = battleshipBack.joinGame(req.body.boardId);
     game? res.status(200).send(game):res.status(400).send();
 }
 
 //Petición: Realizar movimiento (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function moveBattleship(req, res) {
     //Comprueba si el jugador puede mover, si es true devuelve el game
-    const game = battleshipManagement.move(
+    const game = battleshipBack.move(
         req.params.boardId,
         req.body.playerId,
         req.body.square
@@ -109,7 +109,7 @@ function moveBattleship(req, res) {
 
 //Petición: Obetener estado de partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function getBattleship(req, res) {
-    const game = battleshipManagement.getGame(req.params.boardId, req.params.playerId);
+    const game = battleshipBack.getGame(req.params.boardId, req.params.playerId);
     game ? res.status(200).send(game) : res.status(400).send();
 }
 

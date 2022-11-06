@@ -14,12 +14,12 @@ const LENGTH = 10;
 const AGUA = 'O';
 
 function getOther(player) {
-    return player == PLAY1 ? PLAY2 : player == PLAY2 ? PLAY1 : false;
+    return player === PLAY1 ? PLAY2 : player === PLAY2 ? PLAY1 : false;
 }
 
 function isBoardOk(board) {
     // Validacion del tamaño del board y de los botes
-    if (board.length == 10 && board[0].length == 10){
+    if (board.length === 10 && board[0].length === 10){
         let boats = new Array(5).fill(0);
         for(let i= 0; i<LENGTH; i++)
             for(let j= 0; j<LENGTH; j++)
@@ -35,7 +35,7 @@ function isBoardOk(board) {
                     case "carrier4": boats[4]++;
                         break;
                 }
-        return ((JSON.stringify(boats)==JSON.stringify([2, 3, 3, 4, 5])));
+        return ((JSON.stringify(boats)===JSON.stringify([2, 3, 3, 4, 5])));
     }
     return false;
 }
@@ -54,7 +54,7 @@ function clientData(game, player) {
     clientData.winner = game.winner;
     clientData.turn = game.turn;
     clientData.status = game.status;
-    if (player == PLAY1) {
+    if (player === PLAY1) {
         clientData.board = game.board1;
         keys.playerId = game.keys.player1Id;
     } else {
@@ -90,15 +90,15 @@ Llama a las función generateId()
 */
 function joinGame(boardId) {
     //Busca una partida no llena para unirse con la boardId
-    const index = games.findIndex(e => e.keys.boardId == boardId && e.keys.player2Id === null);
+    const index = games.findIndex(e => e.keys.boardId === boardId && e.keys.player2Id === null);
     //Si existe tal partida
-    if (index != -1) {
+    if (index !== -1) {
         const game = games[index];
         //Genera y guarda el nuevo id del jugador que esta entrando
         game.keys.player2Id = crypto.generateId(5);
         game.board2 = null;
         // Si aun el player 1 no posicionó los barcos, el estado es "joined", sino se mantiene en "waiting"
-        if (game.status == 'created') game.status = 'joined';
+        if (game.status === 'created') game.status = 'joined';
         //Actualiza partida en JSON
         games.splice(index, 1);
         saveFile(game);
@@ -116,8 +116,8 @@ con el tablero nuevo y cambiando el turno
 */
 function updateGame(game) {
     //Si existe la partida, guarda el index
-    const index = games.findIndex(e => e.keys.boardId == game.keys.boardId);
-    if (index != -1) {
+    const index = games.findIndex(e => e.keys.boardId === game.keys.boardId);
+    if (index !== -1) {
         //Actualiza esta partida en el array
         const game = games[index];
         games.splice(index, 1);
@@ -133,14 +133,14 @@ Llama a updateGame() si es válido el turno
 */
 function setBoard(boardId, playerId, board) {
     // Obtiene el estado de la partida
-    const game = games.find(e => e.keys.boardId == boardId);
+    const game = games.find(e => e.keys.boardId === boardId);
     // Si la partida existe y el board enviado es correcto
     if (game && isBoardOk(board)) {
         let player = null;
         //Si es el playerId es valido y su tablero no se inicializó aún
-        if ((playerId == game.keys.player1Id && game.board1 === null) || (playerId == game.keys.player2Id && game.board2 === null)) {
+        if ((playerId === game.keys.player1Id && game.board1 === null) || (playerId === game.keys.player2Id && game.board2 === null)) {
             //Si es el P1
-            if (playerId == game.keys.player1Id) {
+            if (playerId === game.keys.player1Id) {
                 player = PLAY1;
                 game.board1 = board;
                 game.boats1 = [2, 3, 3, 4, 5];
@@ -151,8 +151,8 @@ function setBoard(boardId, playerId, board) {
                 game.boats2 = [2, 3, 3, 4, 5];
             }
             //Manejo de estado del juego y de turnos
-            if (game.status != 'waiting') game.status = 'waiting';
-            else if (game.status == 'waiting') {
+            if (game.status !== 'waiting') game.status = 'waiting';
+            else if (game.status === 'waiting') {
                 game.status = 'started';
                 game.turn = getOther(player);
             }
@@ -171,15 +171,15 @@ function move(boardId, playerId, square) {
     const x = parseInt(square[0]);
     const y = parseInt(square[1]);
 
-    const game = games.find(e => e.keys.boardId == boardId);
+    const game = games.find(e => e.keys.boardId === boardId);
     //Validar el turno, si es valido player indica qué jugador movió
-    if (game && ((playerId == game.keys.player1Id && game.turn == PLAY1) || (playerId == game.keys.player2Id && game.turn == PLAY2)) && game.winner === null) {
+    if (game && ((playerId === game.keys.player1Id && game.turn === PLAY1) || (playerId === game.keys.player2Id && game.turn === PLAY2)) && game.winner === null) {
         const player = game.turn;
         let shots = [];
         let valid = false;
 
         // Se actualiza el tablero de disparos del jugador (tablero de oceano del jugador contrario)
-        if (player == PLAY1) {
+        if (player === PLAY1) {
             if (isValidMove(game.board2, x, y)) {
                 shots = updateBoard(game.board2, game.boats2, x, y);
                 if (isWon(game.boats2)) game.winner = game.keys.player1Id;
@@ -211,7 +211,7 @@ function isValidMove(board, x, y) {
 
 function isValid(name) {
     if (name !== null)
-        if (name[0] == 'X' || name[0] == 'F' || name == AGUA)
+        if (name[0] === 'X' || name[0] === 'F' || name === AGUA)
             return false;
     return true;
 }
@@ -221,7 +221,7 @@ function isOnBoard(x, y) {
 }
 
 function isWon(boats) {
-    return boats.every(e => e == 0);
+    return boats.every(e => e === 0);
 }
 
 /* ---------------ACTUALIZACION DE FICHAS DEL TABLERO---------- */
@@ -229,7 +229,7 @@ function updateBoard(board, boats, x, y) {
     // Modifica el casillero clickeado
     // Si es NULL, agua
     let shots = [];
-    if (board[x][y] == EMPTY) {
+    if (board[x][y] === EMPTY) {
         board[x][y] = AGUA;
         // Sino, es un barco, entonces decrementamos contador respectivo
     } else {
@@ -239,10 +239,10 @@ function updateBoard(board, boats, x, y) {
         board[x][y] = 'X' + boatNumber;
         boats[boatNumber]--;
         // Si un contador llegó a cero, se hundió el barco respectivo
-        if (boats[boatNumber] == 0) {
+        if (boats[boatNumber] === 0) {
             for (let i = 0; i < LENGTH; i++)
                 for (let j = 0; j < LENGTH; j++)
-                    if (board[i][j] !== null && board[i][j][1] == boatNumber) {
+                    if (board[i][j] !== null && board[i][j][1] === boatNumber) {
                         board[i][j] = 'F' + boatNumber;
                         shots.push({ value: 'F', x: i, y: j });
                     }
@@ -258,9 +258,9 @@ Retorna el estado de la partida si es existente, sino retorna false
 */
 function getGame(boardId, playerId) {
     //Busca el juego por boardId
-    const game = games.find(e => e.keys.boardId == boardId);
-    return game.keys.player1Id == playerId ? clientData(game, PLAY1) 
-            : (game.keys.player2Id == playerId) ? clientData(game, PLAY2) : null;
+    const game = games.find(e => e.keys.boardId === boardId);
+    return game.keys.player1Id === playerId ? clientData(game, PLAY1) 
+            : (game.keys.player2Id === playerId) ? clientData(game, PLAY2) : null;
 }
 
 module.exports = {
