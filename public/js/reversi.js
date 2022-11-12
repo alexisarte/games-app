@@ -161,7 +161,7 @@ Se detiene cuando se reciben cambios.
 LLama a updateBoard() si se realizaron cambios en la partida
 */
 function pollGame(currentGame) {
-    let idInterval = setInterval(function () {
+    let idInterval = setInterval(() => {
         fetch(`/reversi/get/${localStorage.getItem("boardId")}`)
             .then((response) => {
                 if (response.ok) {

@@ -153,7 +153,7 @@ Se detiene cuando se reciben cambios.
 LLama a updateBoard() si se realizaron cambios en la partida
 */
 function pollGame(currentGame) {
-    let idInterval = setInterval(function () {
+    let idInterval = setInterval(() => {
         fetch(`/battleship/get/${localStorage.getItem('boardId')}/${localStorage.getItem('playerId')}`)
             .then(response => {
                 if (response.ok) {
@@ -281,10 +281,6 @@ function copy() {
     let copyText = this.innerHTML;
     navigator.clipboard.writeText(copyText);
 }
-
-window.addEventListener("beforeunload", function (event) {
-    event.preventDefault();
-});
 
 window.onload = function () {
     const displayGrid = document.querySelector('.grid-display');
