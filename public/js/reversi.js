@@ -77,7 +77,6 @@ startGame() se ejecuta cuando un cliente crea o se suma a una partida,
 elimina el menu y muestra el juego, inicializa variables de localStorage.
 */
 function startGame(gameData) {
-    console.log(gameData);
     //Oculta el menu
     $("game-menu").style.display = "none";
     $("menu").style.display = "none";
@@ -137,9 +136,7 @@ function fetchTurn(square) {
             }
         })
         .then((gameData) => {
-            /* Si pudo mover, se actualiza el tablero 
-        y se reinicia el loop de pollGame() */
-            console.log(gameData)
+            /* Si pudo mover, se actualiza el tablero y se reinicia el loop de pollGame() */
             updateBoard(gameData);
             if (gameData.status == "game") {
                 $("turn").innerHTML = "TURNO DEL OPONENTE";
@@ -173,24 +170,18 @@ function pollGame(currentGame) {
                 }
             })
             .then((latestGame) => {
-                /* Si recibo cambios actualizo el juego 
-            y es mi turno, por lo que dejo de obtener el estado de la partida */
-                
-            if (currentGame.turn == latestGame.turn 
-                && currentGame.status == latestGame.status)
-                    console.log(latestGame)
-                else{
+                // Si recibo cambios actualizo el juego y es mi turno, por lo que dejo de obtener el estado de la partida 
+                if (currentGame.turn !== latestGame.turn || currentGame.status !== latestGame.status) {
                     updateBoard(latestGame);
-                    if (latestGame.status == "check"){
-                        console.log(latestGame)
+                    if (latestGame.status === "check"){
                         $("turn").innerHTML = "NO PODÉS MOVER, TURNO DEL OPONENTE";
                     }else{ 
                         clearInterval(idInterval);
-                        if (latestGame.status == "game")
+                        if (latestGame.status === "game")
                             $("turn").innerHTML = "TU TURNO";
                         else
-                        showPoster(latestGame);
-                    }   
+                            showPoster(latestGame);
+                    } 
                 }
             })
             .catch((err) => console.log(err));

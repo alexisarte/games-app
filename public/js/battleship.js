@@ -164,12 +164,10 @@ function pollGame(currentGame) {
             })
             .then(latestGame => {
                 // si el estado de la partida pasó de "joined" a "started", se detiene el poll y se inicializa el juego
-                if (currentGame.status != latestGame.status) {
+                if (currentGame.status !== latestGame.status) {
                     clearInterval(idInterval);
                     startGame(latestGame);
                     $('turn').innerHTML = 'TU TURNO';
-                } else if (currentGame.turn == latestGame.turn && latestGame.winner === null) {
-                    console.log(latestGame);
                 } else if (latestGame.winner === null) {
                     // si no terminó el juego y es mi turno, se actualiza el tablero y se detiene el poll
                     $('turn').innerHTML = 'TU TURNO';
