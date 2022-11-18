@@ -39,9 +39,8 @@ function joinGame() {
         .then(response => {
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error('ID de tablero inválida.');
             }
+            throw new Error('ID de tablero inválida.');
         })
         .then(gameData => startSetting(gameData))
         .catch(err => console.log(err));
@@ -110,9 +109,8 @@ function fetchTurn(square) {
         .then(response => {
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error('No es posible hacer el movimiento.');
             }
+            throw new Error('No es posible hacer el movimiento.');
         })
         .then(gameData => {
             //Si pudo mover, se actualiza el tablero del contrincante y se reinicia el loop de pollGame()
@@ -158,9 +156,8 @@ function pollGame(currentGame) {
             .then(response => {
                 if (response.ok) {
                     return response.json();
-                } else {
-                    throw new Error('No es posible obtener el estado de la partida.');
                 }
+                throw new Error('No es posible obtener el estado de la partida.');
             })
             .then(latestGame => {
                 // si el estado de la partida pasó de "joined" a "started", se detiene el poll y se inicializa el juego
@@ -239,9 +236,8 @@ function setBoard() {
         .then(response => {
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error('No es posible modificar tu tablero.');
             }
+            throw new Error('No es posible modificar tu tablero.');
         })
         .then(gameData => {   
             document.querySelector('.hidden-info').style.display = 'none';
