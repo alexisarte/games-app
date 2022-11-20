@@ -42,8 +42,9 @@ function joinGame() {
             }
             throw new Error('ID de tablero inválida.');
         })
+        /*global swal*/
         .then(gameData => startSetting(gameData))
-        .catch(err => console.log(err));
+        .catch(err => swal(`${err.message}`, '', 'error'));
 }
 
 /*  
@@ -123,7 +124,8 @@ function fetchTurn(square) {
                 showPoster(gameData);
             }
         })
-        .catch(err => console.log(err));
+        /*global swal*/
+        .catch(err => swal(`${err.message}`, '', 'error'));
 }
 
 function updateShotsBoard(shots) {
@@ -177,7 +179,8 @@ function pollGame(currentGame) {
                     showPoster(latestGame);
                 }
             })
-            .catch(err => console.log(err));
+            /*global swal*/
+            .catch(err => swal(`${err.message}`, '', 'error'));
     }, 2000);
 }
 
@@ -252,7 +255,8 @@ function setBoard() {
                 $('turn').innerHTML = 'TURNO DEL OPONENTE';
             }
         })
-        .catch(err => console.log(err));
+        /*global swal*/
+        .catch(err => swal(`${err.message}`, '', 'error'));
 }
 
 /*  

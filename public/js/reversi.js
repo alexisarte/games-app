@@ -59,16 +59,16 @@ function joinGame() {
         .then((response) => {
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error("ID de tablero inválida.");
             }
+            throw new Error("ID de tablero inválida.");
         })
         .then((gameData) => {
             // Si se unió comienza el juego y escucha el estado de la partida
             startGame(gameData);
             pollGame(gameData);
         })
-        .catch((err) => console.log(err));
+        /*global swal*/
+        .catch(err => swal(`${err.message}`, '', 'error'));
 }
 
 /*  
@@ -131,9 +131,8 @@ function fetchTurn(square) {
         .then((response) => {
             if (response.ok) {
                 return response.json();
-            } else {
-                throw new Error("No es posible hacer el movimiento.");
             }
+            throw new Error("No es posible hacer el movimiento.");
         })
         .then((gameData) => {
             /* Si pudo mover, se actualiza el tablero y se reinicia el loop de pollGame() */
@@ -147,7 +146,8 @@ function fetchTurn(square) {
             else
                 showPoster(gameData);
         })
-        .catch((err) => console.log(err));
+        /*global swal*/
+        .catch(err => swal(`${err.message}`, '', 'error'));
 }
 
 /*  
@@ -163,11 +163,8 @@ function pollGame(currentGame) {
             .then((response) => {
                 if (response.ok) {
                     return response.json();
-                } else {
-                    throw new Error(
-                        "No es posible obtener el estado de la partida."
-                    );
                 }
+                throw new Error("No es posible obtener el estado de la partida.");
             })
             .then((latestGame) => {
                 // Si recibo cambios actualizo el juego y es mi turno, por lo que dejo de obtener el estado de la partida 
@@ -184,7 +181,8 @@ function pollGame(currentGame) {
                     } 
                 }
             })
-            .catch((err) => console.log(err));
+            /*global swal*/
+            .catch(err => swal(`${err.message}`, '', 'error'));
     }, 2000);
 }
 
