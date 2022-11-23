@@ -117,7 +117,7 @@ function fetchTurn(square) {
     //Envía la playerId que movió
     const data = {
         playerId: localStorage.getItem("playerId"),
-        square: square,
+        square
     };
 
     const options = {

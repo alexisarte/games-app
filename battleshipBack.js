@@ -249,7 +249,7 @@ function updateBoard(board, boats, x, y) {
             return shots;
         }
     }
-    shots.push({ value: board[x][y][0], x: x, y: y });
+    shots.push({ value: board[x][y][0], x, y });
     return shots;
 }
 

@@ -161,7 +161,7 @@ function makeMove(board, toFlip, xOr, yOr, play) {
                     while (x != xOr || y != yOr) {
                         x -= dir.x;
                         y -= dir.y;
-                        toFlip.push({ x: x, y: y });
+                        toFlip.push({ x, y });
                     }
                 }
             }

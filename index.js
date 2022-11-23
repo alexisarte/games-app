@@ -1,5 +1,5 @@
 const express = require("express");
-const reversiManagement = require("./reversiManagement");
+const reversiBack = require("./reversiBack");
 const battleshipBack = require("./battleshipBack");
 const app = express();
 
@@ -45,20 +45,20 @@ app.get("/battleship/get/:boardId/:playerId", getBattleship);
 
 //Petición: Crear Juego (P1). Respuesta(si ok): Datos de la partida (game)
 function newReversi(req, res) {
-    const game = reversiManagement.newGame();
+    const game = reversiBack.newGame();
     res.send(game);
 }
 
 //Petición: Unirse a Juego (P2). Respuesta(si ok): Datos de la partida (game)
 function joinReversi(req, res) {
-    const game = reversiManagement.joinGame(req.body.boardId);
+    const game = reversiBack.joinGame(req.body.boardId);
     game? res.status(200).send(game):res.status(400).send();
 }
 
 //Petición: Realizar movimiento (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function moveReversi(req, res) {
     //Comprueba si el jugador puede mover, si es true devuelve el game
-    const game = reversiManagement.move(
+    const game = reversiBack.move(
         req.params.boardId,
         req.body.playerId,
         req.body.square
@@ -68,7 +68,7 @@ function moveReversi(req, res) {
 
 //Petición: Obetener estado de partida (P1 ó P2). Respuesta(si ok): Datos de la partida (game)
 function getReversi(req, res) {
-    const game = reversiManagement.getGame(req.params.boardId);
+    const game = reversiBack.getGame(req.params.boardId);
     game? res.status(200).send(game):res.status(400).send();
 }
 
