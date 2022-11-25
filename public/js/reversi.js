@@ -137,11 +137,11 @@ function fetchTurn(square) {
         .then((gameData) => {
             /* Si pudo mover, se actualiza el tablero y se reinicia el loop de pollGame() */
             updateBoard(gameData);
-            if (gameData.status == "game") {
+            if (gameData.status === "game") {
                 $("turn").innerHTML = "TURNO DEL OPONENTE";
                 pollGame(gameData);
             }
-            else if (gameData.status == "check")
+            else if (gameData.status === "check")
                 $("turn").innerHTML = "ES TU TURNO NUEVAMENTE";
             else
                 showPoster(gameData);
@@ -197,7 +197,7 @@ function updateBoard(gameData) {
             if (gameData.board[i][j] !== null) {
                 let token = document.createElement("div");
                 token.classList.add("token");
-                if (gameData.board[i][j] == "P1") {
+                if (gameData.board[i][j] === "P1") {
                     token.classList.add("tokenDark");
                 } else {
                     token.classList.add("tokenLight");
@@ -212,8 +212,8 @@ function updateBoard(gameData) {
 function showPoster(game) {
     const end = document.createElement("div");
     end.id = "end";
-    end.innerHTML = (game.status == localStorage.getItem("playerId")) ? "GANASTE" : (game.status != "tie") ? "PERDISTE" : "EMPATE";
-    $("game").appendChild(end);
+    end.innerHTML = (game.status === localStorage.getItem("playerId")) ? "GANASTE" : (game.status !== "tie") ? "PERDISTE" : "EMPATE";
+    $("game").appendChild(end); 
     $("turn").remove();
 }
 

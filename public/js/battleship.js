@@ -75,7 +75,7 @@ function startSetting(gameData) {
     localStorage.setItem('boardId', gameData.keys.boardId);
     turn.innerHTML = 'Coloca tus barcos';
     //Si el estado es created, es el player1, sino es el player2
-    if (gameData.status == 'created') {
+    if (gameData.status === 'created') {
         localStorage.setItem('playerId', gameData.keys.player1Id);
         player.innerHTML = 'Jugador 1';
     } else {
@@ -192,13 +192,13 @@ function updateMyBoard(gameData) {
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
             let id = `${i}${j}`;
-            if (gameData.board[i][j] != EMPTY) {
+            if (gameData.board[i][j] !== EMPTY) {
                 const punto = document.createElement('div');
-                if (gameData.board[i][j] == 'O') {
+                if (gameData.board[i][j] === 'O') {
                     punto.id = 'miss';
-                } else if (gameData.board[i][j][0] == 'X') {
+                } else if (gameData.board[i][j][0] === 'X') {
                     punto.id = 'boom';
-                } else if (gameData.board[i][j][0] == 'F') {
+                } else if (gameData.board[i][j][0] === 'F') {
                     punto.id = 'dead';
                 }
                 $(id).innerHTML = '';
@@ -245,7 +245,7 @@ function setBoard() {
         .then(gameData => {   
             document.querySelector('.hidden-info').style.display = 'none';
             document.querySelector('.grid-display').style.display = 'none';
-            if (gameData.status == 'waiting') {
+            if (gameData.status === 'waiting') {
                 $('turn').innerHTML = 'ESPERANDO QUE EL OPONENTE COLOQUE SUS BARCOS';
                 startGame(gameData);
                 pollGame(gameData);
@@ -270,7 +270,7 @@ function startGame(gameData) {
 function showPoster(game) {
     const end = document.createElement('div');
     end.id = 'end';
-    end.innerHTML = game.winner == localStorage.getItem('playerId') ? 'GANASTE' : game.winner != 'TIE' ? 'PERDISTE' : 'EMPATE';
+    end.innerHTML = game.winner === localStorage.getItem('playerId') ? 'GANASTE' : game.winner !== 'TIE' ? 'PERDISTE' : 'EMPATE';
     $('game').appendChild(end);
     $('turn').remove();
 }
