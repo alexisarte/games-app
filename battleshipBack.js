@@ -251,18 +251,14 @@ function updateBoard(board, boats, x, y) {
   } else {
     // Identificacion de barco y posición en el vector contador
     const boatNumber = parseInt(board[x][y][board[x][y].length - 1]);
-    console.log(
-      'BOATNUMBERRRRRRRRRRRRRRRR: ',
-      board[x][y][board[x][y].length - 1]
-    );
-    board[x][y] = 'X' + boatNumber;
+    board[x][y] = `X${boatNumber}`;
     boats[boatNumber]--;
     // Si un contador llegó a cero, se hundió el barco respectivo
     if (boats[boatNumber] === 0) {
       for (let i = 0; i < LENGTH; i++)
         for (let j = 0; j < LENGTH; j++)
           if (board[i][j] !== null && board[i][j][1] === boatNumber) {
-            board[i][j] = 'F' + boatNumber;
+            board[i][j] = `F${boatNumber}`;
             shots.push({ value: 'F', x: i, y: j });
           }
       return shots;
