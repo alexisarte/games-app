@@ -176,12 +176,12 @@ function pollGame(currentGame) {
           clearInterval(idInterval);
           startGame(latestGame);
           $('turn').innerHTML = 'TU TURNO';
-        } else if (latestGame.winner === null) {
+        } else if ((currentGame.turn !== latestGame.turn) && (latestGame.winner === null)) {
           // si no terminó el juego y es mi turno, se actualiza el tablero y se detiene el poll
           $('turn').innerHTML = 'TU TURNO';
           updateMyBoard(latestGame);
           clearInterval(idInterval);
-        } else {
+        } else if (latestGame.winner !== null) {
           // si terminó el juego, se muestra el mensaje de fin y se detiene el poll
           updateMyBoard(latestGame);
           clearInterval(idInterval);
