@@ -55,8 +55,8 @@ function saveFile(game) {
 
 // Devuelve al cliente únicamente los datos seguros
 function clientData(game, player) {
-  let clientData = {};
-  keys = {};
+  const clientData = {};
+  const keys = {};
   clientData.winner = game.winner;
   clientData.turn = game.turn;
   clientData.status = game.status;
