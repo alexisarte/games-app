@@ -176,7 +176,10 @@ function pollGame(currentGame) {
           clearInterval(idInterval);
           startGame(latestGame);
           $('turn').innerHTML = 'TU TURNO';
-        } else if ((currentGame.turn !== latestGame.turn) && (latestGame.winner === null)) {
+        } else if (
+          currentGame.turn !== latestGame.turn &&
+          latestGame.winner === null
+        ) {
           // si no terminó el juego y es mi turno, se actualiza el tablero y se detiene el poll
           $('turn').innerHTML = 'TU TURNO';
           updateMyBoard(latestGame);
@@ -224,7 +227,7 @@ updateBoard() Actualiza el tablero con la información recibida
 
 function setBoard() {
   //Creo el tablero
-  let board = [...Array(ROWS)].map((e) => Array(COLUMNS).fill(EMPTY));
+  let board = [...Array(ROWS)].map(() => Array(COLUMNS).fill(EMPTY));
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLUMNS; j++) {
       let id = `${i}${j}`;
