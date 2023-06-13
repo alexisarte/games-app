@@ -89,19 +89,17 @@ function joinGame(boardId) {
 Cada movimiento genera un nuevo registro de la partida en el JSON, 
 con el tablero nuevo y cambiando el turno 
 */
-function updateGame(game) {
-    //Si existe la partida, guarda el index
-    const index = games.findIndex((e) => e.keys.boardId === game.keys.boardId);
+function updateGame(updatedGame) {
+    const index = games.findIndex((e) => e.keys.boardId === updatedGame.keys.boardId);
     if (index !== -1) {
-        //Actualiza esta partida en el array
         const game = games[index];
         games.splice(index, 1);
-        //Escribir la nueva info al JSON
-        saveFile(game);
-        return game;
+        saveFile(updatedGame);
+        return updatedGame;
     }
     return false;
 }
+
 
 /* ------------------REALIZAR MOVIMIENTO----------------- 
 Validación, gestión de turnos.
