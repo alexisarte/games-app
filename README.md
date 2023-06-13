@@ -5,7 +5,7 @@ Aplicación de juegos desarrollada en equipo como proyecto final del seminario d
 
 
 ## Deploy 🚀
-[Games aplication](https://games-app-x6ud8.ondigitalocean.app/ "Games-app")
+[Games aplication](https://games-app-qzm7y.ondigitalocean.app/ "Games-app")
 
 ## Contributors
 [@inagoy](https://github.com/inagoy)
