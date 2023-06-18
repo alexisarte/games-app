@@ -256,7 +256,7 @@ function updateBoard(board, boats, x, y) {
     if (boats[boatNumber] === 0) {
       for (let i = 0; i < LENGTH; i++)
         for (let j = 0; j < LENGTH; j++)
-          if (board[i][j] !== null && board[i][j][1] === boatNumber) {
+          if (board[i][j] !== null && parseInt(board[i][j][1]) === boatNumber) {
             board[i][j] = `F${boatNumber}`;
             shots.push({ value: 'F', x: i, y: j });
           }
